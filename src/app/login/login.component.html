@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <div class="alert alert-danger" *ngIf="isInvalid">
+        <strong> Username or Password is incorrect! Please try again!</strong>
+      </div>
+
+      <div class="alert alert-success" *ngIf="isEnabled">
+        <strong>
+          Activate your account by clicking the link sent to your email!</strong
+        >
+        <input
+          [(ngModel)]="code"
+          type="text"
+          class="form-control"
+          placeholder="Enter Code"
+        />
+
+        <button type="button" (click)="onActivate()" class="btn btn-info mt-2">
+          Activate
+        </button>
+      </div>
+
+      <div
+        class="card bg-dark"
+        style="width: 25rem; position: relative; margin-top: 230px"
+      >
+        <div class="card-body text-white">
+          <h3 class="card-title text-center py-3">Sign In</h3>
+          <form>
+            <div class="form-group">
+              <label>Username :</label>
+              <input
+                type="text"
+                name="username"
+                class="form-control py-2"
+                [(ngModel)]="user.username"
+                placeholder="Enter Username"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Password :</label>
+              <input
+                type="password"
+                name="password"
+                [(ngModel)]="user.password"
+                class="form-control py-2"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <div class="row justify-content-md-center py-3">
+              <button type="button" (click)="onLoggedIn()" class="btn btn-info">
+                Sign In
+              </button>
+            </div>
+          </form>
+
+          <div class="row justify-content-md-center py-3">
+            <a routerLink="/signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

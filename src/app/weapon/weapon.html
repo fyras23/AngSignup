@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <b>Gun list</b>
+    <table class="table table-striped">
+    <tr> <th>Id</th><th>Name</th> <th>Price</th> <th>Creation date</th> <th>Classes</th><th>Image</th></tr>
+    <tbody *ngFor="let weapon of Weapons">
+    <tr >
+    <td>{{weapon.idWp}}</td>
+    <td>{{weapon.nomWp}}</td>
+    <td>{{weapon.prixWp}}$</td>
+    <td>{{weapon.dateWp | date:'dd/MM/yyyy'}}</td>
+    <td>{{weapon.classe?.nomClass}}</td>
+    <td><img class="card-img-top img-responsive"
+        src = "{{weapon.imageStr}}"
+        
+        style = "height :50px;width:100px">
+        </td>
+    <td><a *ngIf="authService.isAdmin()" class="btn btn-info" (click)="supprimerweapon(weapon)">delete </a></td>
+    <td><a *ngIf="authService.isAdmin()" class="btn btn-outline-primary" [routerLink]="['/updateWeapon',weapon.idWp]">modify</a></td>
+
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

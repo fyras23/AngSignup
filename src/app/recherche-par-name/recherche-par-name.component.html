@@ -1,0 +1,38 @@
+<div class="container">
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>weapon name</label>
+        <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+        </form> -->
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>weapon name</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+            </div>
+            </form>
+    
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <b>guns list</b>
+    <table class="table table-striped">
+    <tr> <th>Id</th><th>Name</th> <th>Price</th> <th>Creation date</th> <th>Classes</th></tr>
+    <tbody *ngFor="let weapon of weapons  | searchFilter: searchTerm" >
+    <tr >
+    <td>{{weapon.idWp}}</td>
+    <td>{{weapon.nomWp}}</td>
+    <td>{{weapon.prixWp}}$</td>
+    <td>{{weapon.dateWp | date:'dd/MM/yyyy'}}</td>
+    <td>{{weapon.classe?.nomClass}}</td>
+    <td><img class="card-img-top img-responsive"
+        src = "{{weapon.imageStr}}"
+        
+        style = "height :50px;width:100px">
+        </td>
+    
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

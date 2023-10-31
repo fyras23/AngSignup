@@ -1,0 +1,49 @@
+<div class="container">
+    <div>
+    <h2>Add new Weapon :</h2>
+    </div>
+    <form >
+       
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+        <label > Weapon name</label>
+        <input type="text"[(ngModel)]= "newweapon.nomWp"
+        name="nomProduit" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Weapon price</label>
+        <input type="number" [(ngModel)]= "newweapon.prixWp" name="prixProduit" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >Creation date</label>
+        <input type="date" [(ngModel)]= "newweapon.dateWp"
+        name="dateCreation" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Classes</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat"
+            [(ngModel)]="newIdClass">
+            <option *ngFor="let cat of Classes" [value]="cat.idClass" >
+            {{cat.nomClass}}
+            </option>
+            </select>
+            </div> 
+            <div class="col-sm-16 col-md-16 col-lg-16">
+                <label class="mb-2">Image :</label>
+                <input type="file" (change)="onImageUpload($event)"
+                name="logo" class="form-control">
+                </div>
+                <div class="mt-2">
+                    <button type="submit" (click)="onAddImageWeapn()" class="btn
+                    btn-success">Ajouter Image</button>
+                    </div>
+
+                <div class="col-sm-16 col-md-16 col-lg-16">
+                    <img [src]="imagePath" class="card-img-top img-fluid rounded-start"
+                    style="width: 500px; height: 300px" />
+                    </div>
+        <div class="mt-2">
+        <button type="submit" (click)="addweapon()"class="btn btn-primary btn-lg">  ADD  </button>
+        </div>
+        </form>
+        </div>
+

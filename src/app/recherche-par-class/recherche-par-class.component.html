@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Categories </label>
+        <select class="form-control form-control-lg" id="idCat" name="idCat"
+        [(ngModel)]="IdClass" (change)="onChange()">
+        <option *ngFor="let cat of classes" value="{{cat.idClass}}">
+        {{cat.nomClass}}
+         </option>
+        </select>
+        </div>
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <b>guns list</b>
+    <table class="table table-striped">
+    <tr> <th>Id</th><th>Name</th> <th>Price</th> <th>Creation date</th> <th>Classes</th></tr>
+    <tbody *ngFor="let weapon of weapons">
+    <tr >
+    <td>{{weapon.idWp}}</td>
+    <td>{{weapon.nomWp}}</td>
+    <td>{{weapon.prixWp}}$</td>
+    <td>{{weapon.dateWp | date:'dd/MM/yyyy'}}</td>
+    <td>{{weapon.classe?.nomClass}}</td>
+    
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <app-update-class [class]=" updatedCl" 
+                         (classUpdated)= "classUpdated($event)" [add]="add"></app-update-class>
+</div>
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <table class="table table-striped">
+    <thead>
+    <tr> <th>Id</th><th>Class Name</th> </tr>
+    </thead>
+    <tbody *ngFor="let cat of Classes">
+    <tr>
+    <td>{{cat.idClass}}</td>
+    <td>{{cat.nomClass}}</td>
+    <td><a class="btn btn-success" (click)="updateClass(cat)">Edit</a></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

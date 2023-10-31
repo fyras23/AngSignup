@@ -1,0 +1,16 @@
+<form>
+    <div v [hidden]="add">
+    <label>ID Class</label>
+    <input type="text" [(ngModel)]="class.idClass" name="idCategorie" class="form-control w-25">
+    </div>
+    <div>
+    <label>Class Name</label>
+    <input type="text" [(ngModel)]="class.nomClass" name="nomCategorie" class="form-control"
+    placeholder="Enter the new Class">
+    </div>
+    <div class="mt-2">
+     <button type="submit" [disabled]="!class.nomClass" class="btn btn-success"
+    (click)="saveClass()" >{{add ? 'ADD' : 'Modify'}}
+</button>
+    </div>
+    </form>

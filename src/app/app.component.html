@@ -1,0 +1,57 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authService.token">
+  <a class="navbar-brand" href="#">Gun shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/weapons" >Home <span class="sr-only">Home</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Weapons
+        </a>
+        <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Weapons-list</a>
+        <a  *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="/add-weapon" >Add-weapon</a>
+       <!-- <a  class="dropdown-item" routerLink="/rechercheParClass" >search by Class</a> -->
+        <a  class="dropdown-item" routerLink="/rechercheParName" >search by Name</a>
+        <a  *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="/listClass" >Class</a>
+
+      </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            routerLink="/users"
+            *ngIf="authService.isAdmin()"
+          >
+            Users
+          </a>
+        </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" href="#">about</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li> <a class="nav-link">{{authService.loggedUser}}</a></li>
+      <li class="nav-item dropdown">
+        
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Connect
+        </a>
+        <div class="dropdown-menu">
+          <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink = "login">Login</a>
+          <a *ngIf="authService.isloggedIn" class="dropdown-item" (click) = "onLogout()">Logout</a>
+          <a class="dropdown-item" href="#">Profile</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

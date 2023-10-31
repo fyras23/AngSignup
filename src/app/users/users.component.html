@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <b>User list</b>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Roles</th>
+              <th>Account status</th>
+              <!-- <th>Actions</th> -->
+            </tr>
+          </thead>
+          <tbody *ngFor="let user of users">
+            <tr>
+              <td>{{ user.user_id }}</td>
+              <td>{{ user.username }}</td>
+              <td>
+                <span *ngFor="let role of user.roles">
+                  <span class="" *ngIf="role.role === 'ADMIN'">*{{ role.role }}*</span><br>
+                  <span class="" *ngIf="role.role === 'USER'">*{{ role.role }}*</span>
+                </span>
+              </td>
+             <!--  <td>
+                <span class="badge badge-success mr-2" *ngIf="user.enabled === true">Active</span>
+                <span class="badge badge-danger mr-2" *ngIf="user.enabled === false">Disabled</span>
+              </td> -->
+              <td>
+                <button class="btn btn-info" *ngIf="authService.isAdmin()" [routerLink]="['/add-role-to-user', user.user_id]">
+                  Edit
+                </button>
+                <br>
+                <button class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="deleteUser(user)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
